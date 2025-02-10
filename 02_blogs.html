@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit a Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body style="background-color: #ECEBDE; color: #28261f;">
+
+    <!-- Top Right Button -->
+    <div class="container mt-3">
+        <div class="d-flex justify-content-end">
+            <a href="/testimonials" class="btn" style="background-color: #f9c700; color: #28261f; font-weight: bold;">
+                Submit a Testimonial
+            </a>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="text-center" style="color: #A59D84;">Submit Your Blog</h2>
+        <form method="POST" action="/submit_blog" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="name" class="form-label">Your Title</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="year" class="form-label">Year of Story</label>
+                <input type="number" class="form-control" id="year" name="year" required>
+            </div>
+            <div class="mb-3">
+                <label for="story" class="form-label">Story</label>
+                <textarea class="form-control" id="story" name="story" rows="5" required></textarea>
+            </div>
+<!--            <div class="mb-3">-->
+<!--                <label for="image" class="form-label">Upload an Image</label>-->
+<!--                <input type="file" class="form-control" id="image" name="image" accept="image/*" required>-->
+<!--                <small class="text-muted">Only JPG, PNG, and GIF formats allowed.</small>-->
+<!--            </div>-->
+            <button type="submit" class="btn" style="background-color: #A59D84; color: #ECEBDE;">Submit Blog</button>
+        </form>
+    </div>
+
+</body>
+</html>

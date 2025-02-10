@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - BlahTherapy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #A59D84;
+            /* Light Olive */
+            --secondary-color: #f9c700;
+            /* Golden Yellow */
+            --accent-color: #28261f;
+            /* Dark Brown */
+            --background-color: #ECEBDE;
+            /* Beige */
+        }
+
+        body {
+            font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h5 {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        .product-card p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .share-opinion-btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .share-opinion-btn:hover {
+            background-color: var(--accent-color);
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--primary-color);
+        }
+
+        .navbar a.nav-link,
+        .navbar .navbar-brand {
+            color: var(--accent-color);
+            font-size: larger;
+        }
+
+        #navbar_name {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: xx-large;
+        }
+
+        .navbar a.nav-link:hover,
+        .navbar .dropdown-menu a.dropdown-item:hover {
+            color: var(--background-color);
+            background-color: var(--secondary-color);
+        }
+
+        .information_class {
+            justify-content: center;
+            text-align: justify;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+        .custom-icon {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="navbar-example2" class="navbar px-3 mb-3">
+        <div class="d-flex align-items-center">
+            <i class="bi bi-airplane-engines custom-icon"></i>
+            <a class="navbar-brand" id="navbar_name" href="#">BlahTherapy</a>
+        </div>
+        <ul class="nav nav-pills ms-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('about_us')}}">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('view_blogs')}}">See Blog</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                    aria-expanded="false">Explore More</a>
+                <ul class="dropdown-menu">
+                    {% if user_logged_in %}
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-person-hearts"></i> {{ user_name }}</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right"></i>
+                            Logout</a></li>
+                    {% else %}
+                    <li><a class="dropdown-item" href="{{ url_for('login_page') }}"><i class="bi bi-person-hearts"></i>
+                            Login</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <section class="container mt-5">
+        <!-- <h1 class="information_class">Welcome to BlahTherapy</h1> -->
+        <p class="information_class" id="information_id"> <strong
+                style="font-size: 30px; font-weight: bolder; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">BlahTherapy</strong>
+            is an online platform designed to provide individuals with a safe, supportive space to share
+            their emotions, seek guidance, and connect with others who understand their struggles. Whether you’re
+            dealing with personal challenges, stress, or simply need someone to talk to, BlahTherapy offers a variety of
+            tools and resources to foster emotional well-being.
+
+            The platform offers a unique, peer-to-peer support system where users can engage in anonymous conversations,
+            seeking comfort and advice from others who have faced similar experiences. BlahTherapy’s mission is to break
+            the stigma surrounding mental health and create a compassionate community where individuals can feel heard
+            and understood. Through its blog, users can share their thoughts, personal stories, and life lessons,
+            contributing to a growing repository of support and encouragement for others who may be going through
+            similar struggles.
+
+            BlahTherapy also provides a range of articles, self-help resources, and expert advice on topics such as
+            managing stress, improving mental health, and building emotional resilience. With an emphasis on privacy and
+            confidentiality, the platform ensures that users can engage in meaningful conversations without fear of
+            judgment.
+
+            In addition to personal support, BlahTherapy encourages community engagement and empowerment, with
+            opportunities for users to connect through group chats, webinars, and other interactive activities. Whether
+            you’re looking to share your own journey or simply listen to someone else’s, BlahTherapy creates an
+            environment of acceptance, empathy, and growth. Join us today to experience the power of shared healing and
+            to become part of a community dedicated to making mental health care accessible and meaningful for everyone.
+        </p>
+       <div class="product-grid">
+        {% for blog in blogs %}
+        <div class="product-card">
+            <img src="{{ blog.image_url if blog.image_url else 'https://via.placeholder.com/300x180' }}"
+                alt="Blog Image">
+            <h5>{{ blog.name }}</h5>
+            <p>{{ blog.story[:100] }}...</p>
+            
+            <button class="share-opinion-btn" data-bs-toggle="modal" data-bs-target="#blogModal" 
+            onclick="loadBlog('{{ blog.id }}')">Read More</button>
+        </div>
+        {% endfor %}
+        </div>
+    </section>
+     <!-- Modal -->
+     <div class="modal fade" id="blogModal" tabindex="-1" aria-labelledby="blogModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="blogModalLabel">Blog Title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="blogImage" class="img-fluid mb-3" src="" alt="Blog Image">
+                    <p id="blogContent">Loading...</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-secondary" onclick="commentBlog()">💬 comment</button>
+                    <button class="btn btn-outline-secondary" onclick="likeBlog()">👍 Like</button>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    <section class="container mt-5 text-center">
+        <h2 class="mb-4">What Our Users Are Saying</h2>
+        <div class="row">
+            {% for testimonial in testimonials %}
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <p>"{{ testimonial.quote }}"</p>
+                        <h5>{{ testimonial.name }}</h5>
+                        <p>Member since {{ testimonial.member_since }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <script>
+        async function loadBlog(blogId) {
+            const response = await fetch(`/blog/${blogId}`);
+            const blog = await response.json();
+
+            document.getElementById('blogModalLabel').textContent = blog.name;
+            document.getElementById('blogImage').src = blog.image_url || 'https://via.placeholder.com/600x400';
+            document.getElementById('blogContent').textContent = blog.story;
+        }
+
+        function likeBlog() {
+            alert("You liked this blog!");
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Testimonial</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #A59D84; /* Light Olive */
+            --secondary-color: #f9c700; /* Golden Yellow */
+            --accent-color: #28261f; /* Dark Brown */
+            --background-color: #ECEBDE; /* Beige */
+        }
+
+        body {
+            background-color: var(--background-color);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        label {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--accent-color);
+        }
+
+        textarea,
+        input {
+            font-size: 1rem;
+            border-radius: 5px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+        }
+
+        textarea {
+            min-height: 150px;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #e0a800;
+        }
+
+        .alert-dismissible {
+            margin-top: 20px;
+        }
+
+        .alert {
+            font-size: 1rem;
+        }
+
+        .btn-close {
+            opacity: 1 !important;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .text-center {
+            color: var(--primary-color);
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.25rem rgba(249, 199, 0, 0.25);
+        }
+
+        .form-label {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <!-- Heading Section -->
+        <h2 class="mb-4">Submit Your Testimonial</h2>
+
+        <!-- Form Section -->
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form method="POST" action="{{ url_for('submit_testimonial') }}">
+                    <div class="form-group">
+                        <label for="quote" class="form-label">Your Testimonial</label>
+                        <textarea id="quote" name="quote" class="form-control" placeholder="Write your testimonial here..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="member_since" class="form-label">Member Since (Year)</label>
+                        <input id="member_since" name="member_since" type="number" class="form-control" placeholder="Enter the year you joined" required>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Flash Message Section -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="alert alert-dismissible mt-4">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                <strong>{{ message }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Blogs</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body style="background-color: #ECEBDE; color: #28261f;">
+<div class="container mt-3">
+        <div class="d-flex justify-content-end">
+            <a href="/testimonials" class="btn" style="background-color: #f9c700; color: #28261f; font-weight: bold;">
+                Submit a Testimonial
+            </a>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <h2 class="text-center" style="color: #A59D84;">Your Blogs</h2>
+        {% for blog in blogs %}
+        <div class="card mb-3" style="border-color: #A59D84;">
+            <div class="card-body">
+                <h5 class="card-title">{{ blog.name }} ({{ blog.year }})</h5>
+                <p class="card-text">{{ blog.story }}</p>
+                <p class="text-muted">By: {{ blog.author }}</p>
+                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ blog.id }}">
+                    <i class="bi bi-trash"></i> Delete
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal for delete confirmation -->
+        <div class="modal fade" id="deleteModal{{ blog.id }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete the blog titled "<strong>{{ blog.name }}</strong>"?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <form method="POST" action="/delete_blog">
+                            <input type="hidden" name="blog_id" value="{{ blog.id }}">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% if blogs|length == 0 %}
+        <p class="text-center">No blogs found. Submit one now!</p>
+        {% endif %}
+    </div>
+
+    <!-- Centered + Icon for Submit Blog -->
+    <div class="d-flex justify-content-center align-items-center ">
+        <a href="/submit_blog" style="text-decoration: none;">
+            <i class="bi bi-plus-square-fill" style="font-size: 100px; color: #A59D84;"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

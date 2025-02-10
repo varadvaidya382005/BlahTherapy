@@ -1,0 +1,158 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About Us</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+        <style>
+            :root {
+                --primary-color: #A59D84; /* Light Olive */
+                --secondary-color: #f9c700; /* Golden Yellow */
+                --accent-color: #28261f; /* Dark Brown */
+                --background-color: #ECEBDE; /* Beige */
+            }
+
+            body {
+                background-color: var(--background-color);
+                color: var(--accent-color);
+                font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+            }
+
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: var(--primary-color);
+            }
+
+            .navbar a.nav-link,
+            .navbar .navbar-brand {
+                color: var(--accent-color);
+                font-size: larger;
+            }
+
+            #navbar_name {
+                font-weight: bold;
+                color: var(--accent-color);
+                font-size: xx-large;
+            }
+
+            .navbar a.nav-link:hover,
+            .navbar .dropdown-menu a.dropdown-item:hover {
+                color: var(--background-color);
+                background-color: var(--secondary-color);
+            }
+
+            .custom-icon {
+                color: var(--secondary-color);
+                font-size: 1.5rem;
+                margin-right: 0.5rem;
+            }
+
+            .hero {
+                background-color: #444139;
+                color: var(--background-color);
+                text-align: center;
+                padding: 80px 20px;
+                border-radius: 10px;
+            }
+
+            .about-section {
+                padding: 40px 20px;
+                background-color: #f0f0f0;
+                border-radius: 8px;
+            }
+
+            .impact-stats {
+                background-color: var(--secondary-color);
+                color: var(--accent-color);
+                padding: 40px 20px;
+                text-align: center;
+                border-radius: 8px;
+            }
+
+            .btn-primary {
+                background-color: var(--secondary-color);
+                border-color: var(--secondary-color);
+                font-size: 1.2rem;
+                padding: 12px 30px;
+            }
+
+            .btn-primary:hover {
+                background-color: var(--accent-color);
+                border-color: var(--accent-color);
+            }
+        </style>
+    </head>
+
+    <body>
+          <!-- Navbar -->
+    <nav id="navbar-example2" class="navbar px-3 mb-3">
+        <div class="d-flex align-items-center">
+            <i class="bi bi-airplane-engines custom-icon"></i>
+            <a class="navbar-brand" id="navbar_name" href="#">BlahTherapy</a>
+        </div>
+        <ul class="nav nav-pills ms-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('about_us') }}">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#scrollspyHeading2">See Blog</a>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Explore More</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ url_for('login_page') }}"><i class="bi bi-person-hearts"></i> Login</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Welcome to BlahTherapy</h1>
+            <p>Your safe space for healing, sharing, and support</p>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section container">
+            <h2>About Us</h2>
+            <p>
+                At <strong>BlahTherapy</strong>, we are dedicated to creating a safe and supportive environment for individuals 
+                dealing with depression and emotional challenges. Our platform provides resources, support groups, and 
+                opportunities to share and connect with others who understand your journey.
+            </p>
+        </section>
+
+        <section class="impact-stats">
+            <h2>Our Impact</h2>
+            <p><strong>25,000+</strong> individuals supported</p>
+            <p><strong>5,000+</strong> peer-to-peer sessions conducted</p>
+            <p><strong>10,000+</strong> blogs and resources shared</p>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="container mt-4">
+            <h2>Why It Matters</h2>
+            <p>
+                Depression can make people feel isolated and misunderstood. At BlahTherapy, we bridge this gap by providing a community where individuals feel heard and supported. Our mission is to inspire hope, empower change, and cultivate understanding for a better world.
+            </p>
+            <div class="text-center">
+                <a href="#scrollspyHeading2" class="btn btn-primary btn-lg">Explore Our Blog</a>
+            </div>
+        </section>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+    </html>
