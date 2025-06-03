@@ -158,4 +158,4 @@ This project is licensed under the MIT License.
 ⸻
 
 
-Let me know if you'd also like a version with AI chat integration (e.g. Gemini or OpenAI), or want this split into separate Markdown sections for a docs site.
+
