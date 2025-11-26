@@ -143,11 +143,6 @@ Endpoint	Method	Description
 
 ⸻
 
-📃 License
-
-This project is licensed under the MIT License.
-
-⸻
 
 ❤️ Built With Focus On
 	•	Anonymous support
